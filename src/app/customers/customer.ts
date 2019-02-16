@@ -4,9 +4,9 @@ export interface CustomerListResult {
 }
 
 export interface Customer {
-  readonly id: number;
-  readonly firstName: string;
-  readonly lastName: string;
-  readonly emailAddress: string;
-  readonly gender: string;
+  readonly id?: number;
+  readonly firstName: string | null;
+  readonly lastName: string | null;
+  readonly emailAddress: string | null;
+  readonly gender: 'MALE' | 'FEMALE' | null;
 }

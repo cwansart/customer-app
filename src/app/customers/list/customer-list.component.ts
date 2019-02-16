@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerListResult } from './customer';
+import { CustomerListResult } from '../customer';
 
 @Component({
   templateUrl: './customer-list.component.html',

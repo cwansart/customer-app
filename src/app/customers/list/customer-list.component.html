@@ -1,10 +1,14 @@
 <h2>Kundenübersicht</h2>
+
+<p>
+  <a routerLink="/customers/add">Neuen Kunden hinzufügen</a>
+</p>
+
 <div *ngIf="customers.error; else customerList">
   {{customers.error}}
 </div>
 
 <ng-template #customerList>
-  hello
   <table *ngIf="customers.customers.length; else noCustomers">
     <thead>
     <tr>

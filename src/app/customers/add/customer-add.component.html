@@ -1,0 +1,93 @@
+<h2>Neuen Kunden hinzufügen</h2>
+
+<p>
+  <a routerLink="/customers">Zurück zur Kundenübersicht</a>
+</p>
+
+<div *ngIf="error">
+  {{error}}
+</div>
+
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">Vorname:</label>
+    <input
+      #firstName="ngModel"
+      type="text"
+      id="firstName"
+      name="firstName"
+      [(ngModel)]="customer.firstName"
+      minlength="1"
+      maxlength="30"
+      pattern="[a-zA-ZÄäÖöÜüß´`&\-]+"
+      required
+    >
+    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+      <ul>
+        <li *ngIf="firstName.errors.required">Der Vorname wird benötigt zum weitermachen.</li>
+        <li *ngIf="firstName.errors.pattern">Der eingegebene Vorname entspricht nicht dem Muster aus den folgenden
+          Buchstaben: a-zA-ZÄäÖöÜüß´`&-
+        </li>
+        <li *ngIf="firstName.errors.minlength">Der eingegebene Vorname muss mindestens 1 Zeichen lang sein.</li>
+        <li *ngIf="firstName.errors.maxlength">Der eingegebene Vorname darf maximal 30 Zeichen lang sein.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Nachname:</label>
+    <input
+      #lastName="ngModel"
+      type="text"
+      id="lastName"
+      name="lastName"
+      [(ngModel)]="customer.lastName"
+      minlength="1"
+      maxlength="30"
+      pattern="[a-zA-ZÄäÖöÜüß´`&\-]+"
+      required
+    >
+    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+      <ul>
+        <li *ngIf="lastName.errors.required">Der Nachname wird benötigt zum weitermachen.</li>
+        <li *ngIf="lastName.errors.pattern">Der eingegebene Nachname entspricht nicht dem Muster aus den folgenden
+          Buchstaben: a-zA-ZÄäÖöÜüß´`&-
+        </li>
+        <li *ngIf="lastName.errors.minlength">Der eingegebene Nachname muss mindestens 1 Zeichen lang sein.</li>
+        <li *ngIf="lastName.errors.maxlength">Der eingegebene Nachname darf maximal 30 Zeichen lang sein.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <label for="emailAddress">E-Mail-Adresse:</label>
+    <input
+      #emailAddress="ngModel"
+      type="email"
+      id="emailAddress"
+      name="emailAdress"
+      [(ngModel)]="customer.emailAddress"
+      minlength="1"
+      maxlength="50"
+      required
+    >
+    <div *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched)">
+      <ul>
+        <li *ngIf="emailAddress.errors.required">Eine E-Mail-Adresse wird benötigt zum weitermachen.</li>
+        <li *ngIf="emailAddress.errors.minlength">Die eingegebene E-Mail-Adresse muss mindestens 1 Zeichen lang sein.
+        </li>
+        <li *ngIf="emailAddress.errors.maxlength">Die eingegebene E-Mail-Adresse darf maximal 50 Zeichen lang sein.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    Geschlecht:
+    <input type="radio" id="male" name="gender" value="MALE" [(ngModel)]="customer.gender" required>
+    <label for="male">männlich</label>
+    <input type="radio" id="female" name="gender" value="FEMALE" [(ngModel)]="customer.gender" required>
+    <label for="female">weiblich</label>
+  </div>
+
+  <input type="submit" value="Kunde speichern" [disabled]="!form.valid || submitted">
+</form>
