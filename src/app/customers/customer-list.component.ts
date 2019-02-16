@@ -9,7 +9,8 @@ export class CustomerListComponent implements OnInit {
   public customers: Customer[];
   public error: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+  }
 
   public ngOnInit() {
     this.customers = this.route.snapshot.data.customers.customers;
