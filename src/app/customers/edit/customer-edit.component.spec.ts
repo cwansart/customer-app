@@ -7,9 +7,9 @@ import { By } from '@angular/platform-browser';
 import { Gender } from '../customer';
 import { HttpClient } from '@angular/common/http';
 import { CustomerEditComponent } from './customer-edit.component';
-import Spy = jasmine.Spy;
 import { of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import Spy = jasmine.Spy;
 
 describe('CustomerEditComponent', () => {
   let fixture: ComponentFixture<CustomerEditComponent>;

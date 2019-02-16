@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CustomerListComponent } from './customer-list.component';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CustomerService } from '../customer.service';
 import { ConfigService } from '../../config.service';
 import { By } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('CustomerListComponent', () => {
   let fixture: ComponentFixture<CustomerListComponent>;
