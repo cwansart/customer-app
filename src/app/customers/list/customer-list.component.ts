@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerListResult } from '../customer';
+import { Customer, CustomerListResult } from '../customer';
+import { CustomerService } from '../customer.service';
 
 @Component({
   templateUrl: './customer-list.component.html',
 })
 export class CustomerListComponent implements OnInit {
-  public customers: CustomerListResult | null;
+  public customers: Customer[];
+  public error: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private service: CustomerService) {
   }
 
   public ngOnInit() {
-    this.customers = this.route.snapshot.data.customers;
+    this.service.getCustomers().subscribe(
+      customers => this.customers = customers,
+      error => this.error = error,
+    );
   }
 }

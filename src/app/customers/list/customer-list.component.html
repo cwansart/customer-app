@@ -4,12 +4,12 @@
   <a routerLink="/customers/add">Neuen Kunden hinzufügen</a>
 </p>
 
-<div *ngIf="customers.error; else customerList">
-  {{customers.error}}
+<div *ngIf="error; else customerList">
+  {{error}}
 </div>
 
 <ng-template #customerList>
-  <table *ngIf="customers.customers.length; else noCustomers">
+  <table *ngIf="customers && customers.length; else noCustomers">
     <thead>
     <tr>
       <td>ID</td>
@@ -20,7 +20,7 @@
       <td>Aktionen</td>
     </tr>
     </thead>
-    <tr *ngFor="let customer of customers.customers">
+    <tr *ngFor="let customer of customers">
       <td>{{customer.id}}</td>
       <td>{{customer.firstName}}</td>
       <td>{{customer.lastName}}</td>

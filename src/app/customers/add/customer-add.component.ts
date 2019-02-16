@@ -30,8 +30,8 @@ export class CustomerAddComponent {
     this.submitted = true;
     this.service.postCustomer(this.customer).subscribe(
       _ => this.router.navigate([ '/customers' ]),
-      _ => {
-        this.error = 'Beim Speichern ist ein Fehler aufgetreten. Bitte versuchen sie es später erneut.';
+      error => {
+        this.error = error;
         this.submitted = false;
       },
     );

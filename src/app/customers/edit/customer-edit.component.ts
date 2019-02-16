@@ -18,8 +18,12 @@ export class CustomerEditComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.customer = this.route.snapshot.data.customer.customer;
-    this.error = this.route.snapshot.data.customer.error;
+    this.route.paramMap.subscribe(map => {
+      this.service.getCustomer(+map.get('id')).subscribe(
+        customer => this.customer = customer,
+        error => this.error = error,
+      );
+    });
   }
 
   public onSubmit() {
@@ -30,10 +34,7 @@ export class CustomerEditComponent implements OnInit {
     this.submitted = true;
     this.service.putCustomer(this.customer).subscribe(
       _ => this.router.navigate([ '/customers' ]),
-      _ => {
-        this.error = 'Beim Speichern ist ein Fehler aufgetreten. Bitte versuchen sie es später erneut.';
-        this.submitted = false;
-      },
+      error => this.error = error,
     );
   }
 }
