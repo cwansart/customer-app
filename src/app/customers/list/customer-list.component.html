@@ -27,7 +27,7 @@
       <td>{{customer.emailAddress}}</td>
       <td>{{customer.gender}}</td>
       <td>
-        <input type="button" value="Bearbeiten" (click)="gotoEdit(customer.id)">
+        <a [routerLink]="['/customers/edit', customer.id]">bearbeiten</a>
       </td>
     </tr>
   </table>

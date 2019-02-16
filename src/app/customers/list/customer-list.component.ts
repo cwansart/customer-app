@@ -8,14 +8,10 @@ import { CustomerListResult } from '../customer';
 export class CustomerListComponent implements OnInit {
   public customers: CustomerListResult | null;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute) {
   }
 
   public ngOnInit() {
     this.customers = this.route.snapshot.data.customers;
-  }
-
-  public gotoEdit(id: number) {
-    this.router.navigate(['/customers/edit', id]);
   }
 }
