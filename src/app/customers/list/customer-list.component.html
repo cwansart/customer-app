@@ -4,7 +4,7 @@
   <a routerLink="/customers/add">Neuen Kunden hinzufügen</a>
 </p>
 
-<div *ngIf="error; else customerList">
+<div *ngIf="error; else customerList" class="customer-list-error">
   {{error}}
 </div>
 
@@ -20,19 +20,21 @@
       <td>Aktionen</td>
     </tr>
     </thead>
-    <tr *ngFor="let customer of customers">
-      <td>{{customer.id}}</td>
-      <td>{{customer.firstName}}</td>
-      <td>{{customer.lastName}}</td>
-      <td>{{customer.emailAddress}}</td>
-      <td>{{customer.gender}}</td>
-      <td>
-        <a [routerLink]="['/customers/edit', customer.id]">bearbeiten</a>
-      </td>
-    </tr>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{customer.id}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.emailAddress}}</td>
+        <td>{{customer.gender}}</td>
+        <td>
+          <a [routerLink]="['/customers/edit', customer.id]">bearbeiten</a>
+        </td>
+      </tr>
+    </tbody>
   </table>
 
-  <ng-template #noCustomers>
+  <ng-template #noCustomers class="customer-list-info">
     Es wurden keine Kunden in der Datenbank gefunden.
   </ng-template>
 </ng-template>

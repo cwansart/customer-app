@@ -13,5 +13,10 @@ export interface Customer {
   readonly firstName: string | null;
   readonly lastName: string | null;
   readonly emailAddress: string | null;
-  readonly gender: 'MALE' | 'FEMALE' | null;
+  readonly gender: Gender | null;
+}
+
+export enum Gender {
+  Male = 'MALE',
+  Female = 'FEMALE',
 }

@@ -27,14 +27,13 @@ export class CustomerEditComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.form.invalid) {
-      return;
-    }
-
     this.submitted = true;
     this.service.putCustomer(this.customer).subscribe(
       _ => this.router.navigate([ '/customers' ]),
-      error => this.error = error,
+      error => {
+        this.error = error;
+        this.submitted = false;
+      },
     );
   }
 }

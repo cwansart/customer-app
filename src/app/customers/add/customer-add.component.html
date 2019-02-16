@@ -4,7 +4,7 @@
   <a routerLink="/customers">Zurück zur Kundenübersicht</a>
 </p>
 
-<div *ngIf="error">
+<div *ngIf="error" class="customer-add-error">
   {{error}}
 </div>
 
@@ -24,12 +24,12 @@
     >
     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
       <ul>
-        <li *ngIf="firstName.errors.required">Der Vorname wird benötigt zum weitermachen.</li>
-        <li *ngIf="firstName.errors.pattern">Der eingegebene Vorname entspricht nicht dem Muster aus den folgenden
+        <li *ngIf="firstName.errors.required" class="firstName-errors-required">Der Vorname wird benötigt zum weitermachen.</li>
+        <li *ngIf="firstName.errors.pattern" class="firstName-errors-pattern">Der eingegebene Vorname entspricht nicht dem Muster aus den folgenden
           Buchstaben: a-zA-ZÄäÖöÜüß´`&-
         </li>
-        <li *ngIf="firstName.errors.minlength">Der eingegebene Vorname muss mindestens 1 Zeichen lang sein.</li>
-        <li *ngIf="firstName.errors.maxlength">Der eingegebene Vorname darf maximal 30 Zeichen lang sein.</li>
+        <li *ngIf="firstName.errors.minlength" class="firstName-errors-maxlength">Der eingegebene Vorname muss mindestens 1 Zeichen lang sein.</li>
+        <li *ngIf="firstName.errors.maxlength" class="firstName-errors-minlength">Der eingegebene Vorname darf maximal 30 Zeichen lang sein.</li>
       </ul>
     </div>
   </div>

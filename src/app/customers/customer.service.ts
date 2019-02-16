@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Customer } from './customer';
 import { ConfigService } from '../config.service';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,7 @@ export class CustomerService {
     return this.http.post<Customer>(`${this.config.apiUrl}/customers`, customer)
       .pipe(
         map(_ => null),
-        catchError(_ => throwError('Das Speichern ist fehlgeschlagen, da die Datenbank zurzeit nicht erreichbar ist')),
+        catchError(_ => throwError('Das Speichern ist fehlgeschlagen, da die Datenbank zurzeit nicht erreichbar ist.')),
       );
   }
 
@@ -42,7 +42,7 @@ export class CustomerService {
       gender: customer.gender,
     }).pipe(
       map(_ => null),
-      catchError(_ => throwError('Das Speichern ist fehlgeschlagen, da die Datenbank zurzeit nicht erreichbar ist')),
+      catchError(_ => throwError('Das Speichern ist fehlgeschlagen, da die Datenbank zurzeit nicht erreichbar ist.')),
     );
   }
 }

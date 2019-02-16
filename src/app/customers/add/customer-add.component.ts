@@ -23,10 +23,6 @@ export class CustomerAddComponent {
   }
 
   public onSubmit() {
-    if (this.form.invalid) {
-      return;
-    }
-
     this.submitted = true;
     this.service.postCustomer(this.customer).subscribe(
       _ => this.router.navigate([ '/customers' ]),
