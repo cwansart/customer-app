@@ -3,6 +3,11 @@ export interface CustomerListResult {
   readonly error?: string;
 }
 
+export interface CustomerResult {
+  readonly customer: Customer | null;
+  readonly error?: string;
+}
+
 export interface Customer {
   readonly id?: number;
   readonly firstName: string | null;

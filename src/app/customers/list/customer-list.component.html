@@ -27,8 +27,7 @@
       <td>{{customer.emailAddress}}</td>
       <td>{{customer.gender}}</td>
       <td>
-        <input type="button" value="Bearbeiten">
-        <input type="button" value="Löschen">
+        <input type="button" value="Bearbeiten" (click)="gotoEdit(customer.id)">
       </td>
     </tr>
   </table>
