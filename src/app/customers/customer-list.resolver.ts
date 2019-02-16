@@ -19,9 +19,9 @@ export class CustomerListResolver implements Resolve<Observable<CustomerListResu
         map(customers => ({
           customers,
         })),
-        catchError(error => of({
+        catchError(_ => of({
           customers: null,
-          error,
+          error: 'Zurzeit ist die Datenbank nicht erreichbar.',
         })),
       );
   }

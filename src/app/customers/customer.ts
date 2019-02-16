@@ -1,5 +1,5 @@
 export interface CustomerListResult {
-  readonly customers?: Customer[];
+  readonly customers: Customer[] | null;
   readonly error?: string;
 }
 
